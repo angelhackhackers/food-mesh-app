@@ -3,7 +3,6 @@ import {Animated} from 'react-native'
 import {observable, computed, decorate, observer, autorun}from 'mobx'
 import Dealer from '../models/dealer'
 import Coordinates from './../models/coordinates'
-import getRegionForCoordinates from './../functions/getRegionForCoordinates'
 import Events from './../models/events'
 
 
@@ -47,7 +46,6 @@ class Store {
     this.coordinateList = this.dealerList.map(dealer =>
       dealer.coordinate
     )
-    this.displayRegion = getRegionForCoordinates(this.coordinateList)
   }
 }
 
