@@ -1,0 +1,14 @@
+{
+	"auth": {
+		"foodmesh67b2a04e": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation"
+		}
+	},
+	"storage": {
+		"s3831f14eb": {
+			"service": "S3",
+			"providerPlugin": "awscloudformation"
+		}
+	}
+}
