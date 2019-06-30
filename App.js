@@ -32,27 +32,27 @@ const configurations = {
   Home: {
     screen: HomeScreen,
     navigationOptions: {
-      tabBarLabel: 'Home',
+      tabBarLabel: 'Food',
       tabBarIcon: ({ tintColor }) => (
-        <Ionicons style={{fontSize: 26, color: tintColor}} name="ios-home" />
+        <Ionicons style={{fontSize: 26, color: tintColor}} name="ios-pizza" />
       )
     }
   },
   Profile: {
     screen: ProfileScreen,
     navigationOptions: {
-      tabBarLabel: 'Profile',
+      tabBarLabel: 'Restaurant',
       tabBarIcon: ({tintColor}) => (
-        <Ionicons style={{fontSize: 26, color: tintColor}} name="ios-person" />
+        <Ionicons style={{fontSize: 26, color: tintColor}} name="ios-home" />
       )
     }
   },
   Settings: {
     screen: SettingsScreen,
     navigationOptions: {
-      tabBarLabel: 'Settings',
+      tabBarLabel: 'Orders',
       tabBarIcon: ({ tintColor }) => (
-        <Ionicons style={{fontSize: 26, color: tintColor}} name="ios-settings" />
+        <Ionicons style={{fontSize: 26, color: tintColor}} name="ios-list" />
       )
     }
   },
@@ -84,7 +84,7 @@ const options = {
     showIcon: true,
   }
 }
-
+console.disableYellowBox = true;
 // Bottom App tabs
 const AppTabNavigator = createMaterialTopTabNavigator(configurations, options)
 

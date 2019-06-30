@@ -9,6 +9,8 @@ import * as Icon from '@expo/vector-icons';
 import * as Permissions from 'expo-permissions';
 import { Camera } from 'expo-camera';
 import { Storage } from 'aws-amplify';
+import { Input, Button,ButtonGroup} from 'react-native-elements';
+import style from '../config/styles'
 
 import Colors from '../constants/Colors';
 
@@ -18,6 +20,7 @@ export default class CameraComponent extends React.Component {
     this.state = {
       hasCameraPermission: null, // カメラ機能の許可
       type: Camera.Constants.Type.back, // 背面カメラを利用
+      count:10
     };
 
     this.takePicture = this.takePicture.bind(this);
@@ -34,7 +37,8 @@ export default class CameraComponent extends React.Component {
   // 撮影
   async takePicture() {
     const pictureData = await this.camera.takePictureAsync({width:30,height:30});
-    alert('successs')
+    this.setState({count:this.state.count-1})
+    if(this.state.count<1){alert('10 images uploaded')}
     const awsReturn = uploadImageToS3(pictureData.uri)
     console.log('return: ',awsReturn)
   }
@@ -68,6 +72,16 @@ export default class CameraComponent extends React.Component {
             this.camera = ref;
           }}
         >
+          <Input
+				placeholderTextColor='white'
+				containerStyle ={{...style.createEventContainer,height:40,margin:20,backgroundColor:'transparent'}}
+				inputContainerStyle={{...style.createEventTextUnderline,color:'white'}}
+				inputStyle = {{...style.createEventText,color:'white'}}
+				placeholder='Food Name'
+			/>
+      <Text style={{fontSize:30,color:'white',marginLeft:20}}>
+        {this.state.count}
+      </Text>
           <View
             style={{
               flex: 1,

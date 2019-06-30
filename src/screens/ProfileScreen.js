@@ -3,55 +3,15 @@ import React, { Component } from 'react'
 import { AppRegistry, StyleSheet, View, Text } from 'react-native'
 import { ViewPager } from 'rn-viewpager'
 
-import MapView from 'react-native-maps';
+import MapView , {Marker} from 'react-native-maps';
 import StepIndicator from 'react-native-step-indicator'
+import SetName from '../components/SetName'
+import AudioRecord from '../components/AudioRecord'
+import PhotoGallery from '../components/photoGallery'
 
 const PAGES = ['Page 1', 'Page 2', 'Page 3', 'Page 4', 'Page 5']
 
-const firstIndicatorStyles = {
-  stepIndicatorSize: 30,
-  currentStepIndicatorSize: 40,
-  separatorStrokeWidth: 3,
-  currentStepStrokeWidth: 5,
-  separatorFinishedColor: '#4aae4f',
-  separatorUnFinishedColor: '#a4d4a5',
-  stepIndicatorFinishedColor: '#4aae4f',
-  stepIndicatorUnFinishedColor: '#a4d4a5',
-  stepIndicatorCurrentColor: '#ffffff',
-  stepIndicatorLabelFontSize: 15,
-  currentStepIndicatorLabelFontSize: 15,
-  stepIndicatorLabelCurrentColor: '#000000',
-  stepIndicatorLabelFinishedColor: '#ffffff',
-  stepIndicatorLabelUnFinishedColor: 'rgba(255,255,255,0.5)',
-  labelColor: '#666666',
-  labelSize: 12,
-  currentStepLabelColor: '#4aae4f'
-}
 
-const secondIndicatorStyles = {
-  stepIndicatorSize: 30,
-  currentStepIndicatorSize: 40,
-  separatorStrokeWidth: 2,
-  currentStepStrokeWidth: 3,
-  stepStrokeCurrentColor: '#fe7013',
-  stepStrokeWidth: 3,
-  separatorStrokeFinishedWidth: 4,
-  stepStrokeFinishedColor: '#fe7013',
-  stepStrokeUnFinishedColor: '#aaaaaa',
-  separatorFinishedColor: '#fe7013',
-  separatorUnFinishedColor: '#aaaaaa',
-  stepIndicatorFinishedColor: '#fe7013',
-  stepIndicatorUnFinishedColor: '#ffffff',
-  stepIndicatorCurrentColor: '#ffffff',
-  stepIndicatorLabelFontSize: 13,
-  currentStepIndicatorLabelFontSize: 13,
-  stepIndicatorLabelCurrentColor: '#fe7013',
-  stepIndicatorLabelFinishedColor: '#ffffff',
-  stepIndicatorLabelUnFinishedColor: '#aaaaaa',
-  labelColor: '#999999',
-  labelSize: 13,
-  currentStepLabelColor: '#fe7013'
-}
 
 const thirdIndicatorStyles = {
   stepIndicatorSize: 25,
@@ -130,30 +90,6 @@ export default class App extends Component {
   render () {
     return (
       <View style={styles.container}>
-        {/* <View style={styles.stepIndicator}>
-          <StepIndicator
-            customStyles={firstIndicatorStyles}
-            currentPosition={this.state.currentPage}
-            labels={['Account', 'Profile', 'Band', 'Membership', 'Dashboard']}
-            renderLabel={this.renderLabel}
-            onPress={this.onStepPress}
-          />
-        </View>
-        <View style={styles.stepIndicator}>
-          <StepIndicator
-            renderStepIndicator={this.renderStepIndicator}
-            customStyles={secondIndicatorStyles}
-            currentPosition={this.state.currentPage}
-            onPress={this.onStepPress}
-            labels={[
-              'Cart',
-              'Delivery Address',
-              'Order Summary',
-              'Payment Method',
-              'Track'
-            ]}
-          />
-        </View> */}
         <View style={styles.stepIndicator}>
           <StepIndicator
             stepCount={4}
@@ -193,31 +129,20 @@ export default class App extends Component {
             latitude: 35.674372,  longitude: 139.768568,
             latitudeDelta: 0.0922, longitudeDelta: 0.0421,
           }}
-          />:null
+          ><Marker draggable coordinate={{latitude: 35.674372,  longitude: 139.768568,}}/>
+        </MapView>:null
         }
-        { data=='Page 2'?<MapView
-          style={{ alignSelf: 'stretch', height: 400 }}
-          initialRegion={{
-            latitude: 35.674372,  longitude: 139.768568,
-            latitudeDelta: 0.0922, longitudeDelta: 0.0421,
-          }}
-          />:null
+        { data=='Page 2'?
+          <SetName/>
+          :null
         }
-        { data=='Page 3'?<MapView
-          style={{ alignSelf: 'stretch', height: 400 }}
-          initialRegion={{
-            latitude: 35.674372,  longitude: 139.768568,
-            latitudeDelta: 0.0922, longitudeDelta: 0.0421,
-          }}
-          />:null
+        { data=='Page 3'?
+       <AudioRecord/>
+          :null
         }
-        { data=='Page 4'?<MapView
-          style={{ alignSelf: 'stretch', height: 400 }}
-          initialRegion={{
-            latitude: 35.674372,  longitude: 139.768568,
-            latitudeDelta: 0.0922, longitudeDelta: 0.0421,
-          }}
-          />:null
+        { data=='Page 4'?
+        <PhotoGallery style={{height:'100%'}}/>
+          :null
         }
       </View>
     )
