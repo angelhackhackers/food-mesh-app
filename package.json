@@ -9,7 +9,7 @@
   "dependencies": {
     "aws-amplify": "^1.1.17",
     "aws-amplify-react-native": "^2.1.5",
-    "expo": "^33.0.0",
+    "expo": "^46.0.14",
     "mime-types": "^2.1.24",
     "mobx": "^5.10.1",
     "mobx-react": "^6.1.1",
